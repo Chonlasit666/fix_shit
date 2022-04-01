@@ -8,6 +8,12 @@ def user_get_me(*, user: User):
         'email': user.email
     }
 
+def test_api():
+    return {
+        'a' : "a",
+        'b' : "b"
+ 
+    }
 
 def jwt_response_payload_handler(token, user=None, request=None):
     return {

@@ -7,12 +7,17 @@ from api.mixins import ApiErrorsMixin, ApiAuthMixin, PublicApiMixin
 from auth.services import jwt_login, google_validate_id_token
 
 from users.services import user_get_or_create
-from users.selectors import user_get_me
+from users.selectors import *
 
 
 class UserMeApi(ApiAuthMixin, ApiErrorsMixin, APIView):
     def get(self, request, *args, **kwargs):
         return Response(user_get_me(user=request.user))
+
+class Test(ApiAuthMixin, ApiErrorsMixin, APIView):
+    def get(self, request, *args, **kwargs):
+        return Response(test_api())
+
 
 
 class UserInitApi(PublicApiMixin, ApiErrorsMixin, APIView):
