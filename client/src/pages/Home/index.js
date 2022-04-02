@@ -32,7 +32,7 @@ const Home = () => {
         alt="Welcome Panda"
         className={styles.pandaImg}
       />
-      <h1 className={styles.userEmail}>{user.email}</h1>
+      <h1 className={styles.userEmail}>{user.name}</h1>
       <button className={styles.logoutBtn} onClick={handleLogout}>
         LOGOUT
       </button>

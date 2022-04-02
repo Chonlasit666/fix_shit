@@ -28,7 +28,8 @@ class Profile(models.Model):
         ('S', 'Student'),
         ('P', 'Professor')
     )
-    name = models.CharField(max_length=200, null=True, blank=True,default="test")
+    first_name = models.CharField(max_length=200, null=True, blank=True)
+    last_name = models.CharField(max_length=200, null=True, blank=True)
     email = models.OneToOneField(User, on_delete=models.CASCADE)
     # avatar = models.ImageField(upload_to='profile', blank = True) this
     avatar = models.CharField(max_length=200, null=True, blank=True)

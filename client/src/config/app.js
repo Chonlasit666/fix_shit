@@ -15,7 +15,7 @@ function App() {
       </UserContext.Provider>
 
       <ToastContainer
-        position="top-right"
+        position="top-left"
         autoClose={3000}
         hideProgressBar
         newestOnTop
