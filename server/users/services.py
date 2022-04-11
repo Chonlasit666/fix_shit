@@ -5,7 +5,7 @@ from django.core.management.utils import get_random_secret_key
 
 from utils import get_now
 
-from users.models import User
+from users.models import User , Todo
 
 
 def user_create(email, password=None, **extra_fields) -> User:
@@ -59,8 +59,16 @@ def user_change_secret_key(*, user: User) -> User:
 @transaction.atomic
 def user_get_or_create(*, email: str, **extra_data) -> Tuple[User, bool]:
     user = User.objects.filter(email=email).first()
+    print(extra_data)
 
     if user:
         return user, False
 
     return user_create(email=email, **extra_data), True
+
+@transaction.atomic
+def post_todos(title : str ,  description : str , completed : bool ) :
+    todo = Todo.objects.create(title=title , description = description , completed = completed)
+
+    return todo
+    

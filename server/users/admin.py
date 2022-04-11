@@ -32,5 +32,9 @@ class UserAdmin(DjangoUserAdmin):
 class projectAdmin(admin.ModelAdmin):
     filter_horizontal = ('owner', 'adviser',)
 
+class TodoAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description', 'completed')
+
+admin.site.register(Todo, TodoAdmin)
 admin.site.register(Project, projectAdmin)
 admin.site.register(Profile)

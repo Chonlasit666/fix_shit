@@ -5,7 +5,7 @@ from django.core.management.utils import get_random_secret_key
 
 class User(AbstractUser):
     username = None
-    email = models.EmailField(unique=True, db_index=True)
+    email = models.EmailField(unique=True, db_index=True ,  primary_key=True)
     secret_key = models.CharField(max_length=255, default=get_random_secret_key)
 
 
@@ -30,7 +30,7 @@ class Profile(models.Model):
     )
     first_name = models.CharField(max_length=200, null=True, blank=True)
     last_name = models.CharField(max_length=200, null=True, blank=True)
-    email = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.OneToOneField(User, unique=True,on_delete=models.CASCADE)
     # avatar = models.ImageField(upload_to='profile', blank = True) this
     avatar = models.CharField(max_length=200, null=True, blank=True)
     status = models.CharField(
@@ -49,3 +49,12 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Todo(models.Model):
+    title = models.CharField(max_length=120)
+    description = models.TextField()
+    completed = models.BooleanField(default=False)
+
+    def _str_(self):
+        return self.title

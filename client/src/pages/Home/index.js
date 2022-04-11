@@ -6,13 +6,17 @@ import { useUserRequired } from '../../utils/hooks';
 import { UserContext, Layout } from '../../components';
 
 import welcomePandaGif from './assets/welcome-panda.gif';
-import { logout } from '../../pages/Home/sdk';
+import { logout, todo } from '../../pages/Home/sdk';
 import styles from './Home.module.css';
 
 const Home = () => {
   useUserRequired();
   const history = useHistory();
   const { user, setUser } = useContext(UserContext);
+
+  const handleTodo = useCallback(() => {
+    todo();
+  }, [setUser, history]);
 
   const handleLogout = useCallback(() => {
     logout().then(() => {
@@ -25,8 +29,16 @@ const Home = () => {
     return null;
   }
 
+
+
   return (
     <Layout className={styles.content}>
+
+      
+      <button  onClick={handleTodo}>
+        Test
+      </button>
+      
       <img
         src={welcomePandaGif}
         alt="Welcome Panda"
@@ -36,6 +48,7 @@ const Home = () => {
       <button className={styles.logoutBtn} onClick={handleLogout}>
         LOGOUT
       </button>
+
       
     </Layout>
   );

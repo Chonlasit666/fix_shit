@@ -3,7 +3,7 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import { LOGIN_URL, HOME_URL } from './urls';
+import { LOGIN_URL, HOME_URL} from './urls';
 
 import { Login, Home } from '../pages';
 
